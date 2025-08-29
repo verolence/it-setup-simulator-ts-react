@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "commonjs",
-    "rootDir": "src",
-    "outDir": "dist",
-    "strict": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "target": "ES2020",                   // в какой стандарт JS компилировать
+    "module": "commonjs",                 // какая система модулей (Node.js использует CommonJS)
+    "rootDir": "src",                     // где лежат исходники (TS-файлы)
+    "outDir": "dist",                     // куда класть собранные JS-файлы
+    "strict": true,                       // строгая проверка типов
+    "esModuleInterop": true,              // позволяет писать import express from "express"
+    "forceConsistentCasingInFileNames": true, // проверка регистра в названиях файлов
+    "skipLibCheck": true                  // не проверять типы в node_modules (ускоряет сборку)
   }
 }
