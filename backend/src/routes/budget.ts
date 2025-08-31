@@ -4,7 +4,7 @@ const router = Router();
 
 // функция для случайного бюджета от 1000 до 3000
 function getRandomBudget() {
-  const min = 500;
+  const min = 1000;
   const max = 3000;
   const step = 100; // кратность 100
   const range = Math.floor((max - min) / step) + 1;
