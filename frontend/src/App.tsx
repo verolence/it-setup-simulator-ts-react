@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
 
 function App() {
+  const [budget, setBudget] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch("/budget") // прокси перенаправит на backend:3000
+      .then((res) => res.json())
+      .then((data) => setBudget(data.budget))
+      .catch((err) => console.error("Ошибка при загрузке бюджета:", err));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ textAlign: "center", marginTop: 50, fontFamily: "sans-serif" }}>
+      <h1>Добро пожаловать в игру 🎮</h1>
+      {budget !== null ? (
+        <h2>Ваш бюджет: ${budget}</h2>
+      ) : (
+        <p>Загружаем бюджет...</p>
+      )}
     </div>
   );
 }
