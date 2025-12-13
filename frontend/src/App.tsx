@@ -1,25 +1,23 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-function App() {
+export default function App() {
   const [budget, setBudget] = useState<number | null>(null);
 
-  useEffect(() => {
-    fetch("/budget") // прокси перенаправит на backend:3000
-      .then((res) => res.json())
-      .then((data) => setBudget(data.budget))
-      .catch((err) => console.error("Ошибка при загрузке бюджета:", err));
-  }, []);
+useEffect(() => {
+  fetch("http://localhost:3000/budget")
+    .then(res => res.json())
+    .then(data => setBudget(data.budget))
+    .catch(console.error);
+}, []);
 
   return (
-    <div style={{ textAlign: "center", marginTop: 50, fontFamily: "sans-serif" }}>
-      <h1>Добро пожаловать в игру 🎮</h1>
-      {budget !== null ? (
-        <h2>Ваш бюджет: ${budget}</h2>
-      ) : (
+    <div style={{ textAlign: "center", marginTop: 50 }}>
+      <h1>IT Setup Simulator 🎮</h1>
+      {budget === null ? (
         <p>Загружаем бюджет...</p>
+      ) : (
+        <h2>Ваш бюджет: ${budget}</h2>
       )}
     </div>
   );
 }
-
-export default App;
