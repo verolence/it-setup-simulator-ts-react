@@ -1,5 +1,8 @@
 # dependencies
 node_modules/
+frontend/.parcel-cache/
+frontend/dist/
+*.tsbuildinfo
 
 # production build
 dist/
@@ -24,5 +27,5 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 
-# coverage (если будешь тесты писать)
+# coverage
 coverage/
