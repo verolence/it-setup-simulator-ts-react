@@ -21,7 +21,7 @@ export default function App() {
   const [remainingBudget, setRemainingBudget] = useState<number | null>(null);
   const [started, setStarted] = useState(false);
 
-  const [zoneOne, setZoneOne] = useState<{
+  const [workspaceItems, setWorkspaceItems] = useState<{
     desk: Item | null;
     laptop: Item | null;
     chair: Item | null;
@@ -53,7 +53,7 @@ export default function App() {
       return;
     }
 
-    setZoneOne(prev => ({ ...prev, [item.name]: item }));
+    setWorkspaceItems(prev => ({ ...prev, [item.name]: item }));
     setSelectedItems(prev => ({ ...prev, [item.name]: item.id }));
     setRemainingBudget(prev => (prev !== null ? prev - item.price : null));
   };
@@ -78,7 +78,6 @@ export default function App() {
           )}
         </div>
       ) : (
-        // Сюда вставляем твой текущий код с зонами
         <div style={{ display: "flex", gap: 20 }}>
           {/* Левая зона — рабочее место */}
           <div style={{ flex: 5, border: "2px solid black", padding: 10 }}>
@@ -99,15 +98,25 @@ export default function App() {
                   }}
                 >
                   <span style={{ fontWeight: "bold" }}>{slot.toUpperCase()}</span>
-                  <span>{zoneOne[slot]?.label || "-"}</span>
-                  {zoneOne[slot] && <span>${zoneOne[slot]?.price}</span>}
+                  <span>{workspaceItems[slot]?.label || "-"}</span>
+                  {workspaceItems[slot] && <span>${workspaceItems[slot]?.price}</span>}
                 </div>
               ))}
             </div>
+            <button
+              style={{ padding: "5px 10px", marginTop: 20, marginBottom: 10, cursor: "pointer" }}
+              onClick={() => {
+                setWorkspaceItems({ desk: null, laptop: null, chair: null });
+                setSelectedItems({ desk: null, laptop: null, chair: null });
+                setRemainingBudget(budget); // сброс оставшегося бюджета
+              }}
+            >
+              Очистить
+            </button>
           </div>
 
           {/* Правая зона — выбор предметов */}
-          <div style={{ flex: 1, border: "2px solid blue", padding: 10 }}>
+          <div style={{ flex: 1, border: "2px solid black", padding: 10 }}>
             <h2>Выбор предметов</h2>
             <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 10 }}>
               {items.map(item => {
