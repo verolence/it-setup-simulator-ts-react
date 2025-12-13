@@ -3,8 +3,11 @@
 
 ## Стек технологий
 Frontend: React + TypeScript + Parcel 2
+
 Backend: Node.js + Express + TypeScript
+
 Dev: concurrently для одновременного запуска фронта и бэка
+
 Дополнительно: CORS для работы фронта с бэком
 
 ## Запуск backend и frontend через concurrently
