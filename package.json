@@ -1,9 +1,10 @@
 {
   "name": "it-setup-simulator",
   "scripts": {
-    "dev": "concurrently \"npm run dev --prefix backend\" \"npm start --prefix frontend\""
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\""
   },
   "devDependencies": {
-    "concurrently": "^8.0.0"
+    "concurrently": "^8.2.2",
+    "http-proxy-middleware": "^3.0.5"
   }
 }
