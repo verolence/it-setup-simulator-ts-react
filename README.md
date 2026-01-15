@@ -12,7 +12,7 @@ Dev: concurrently для одновременного запуска фронт�
 
 ## Запуск backend и frontend через concurrently
 ```
-git clone <URL_репозитория>
+git clone https://github.com/verolence/it-setup-simulator-ts-react
 cd it-setup-simulator-ts-react
 npm install
 npm run dev
